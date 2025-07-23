@@ -1,8 +1,7 @@
 const std = @import("std");
 
 const flags = @import("flags");
-
-const PM = @import("pm.zig").PM;
+const zmaps = @import("zmaps");
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}).init;
@@ -20,13 +19,13 @@ pub fn main() !void {
         },
     });
 
-    var p = try PM.init(f.pid);
+    var p = try zmaps.PM.init(f.pid);
     defer p.deinit();
 
-    const mem_range = try p.findModule(f.mod);
+    const map = try p.findModule(f.mod);
 
     const stdout = std.io.getStdOut().writer();
-    try stdout.print("start: {x}\tend: {x}\n", .{ mem_range.start, mem_range.end });
+    try stdout.print("[*] {?s} at \x1b[1;37m{x}-{x}\x1b[0;37m\n", .{ map.path, map.start, map.end });
 }
 
 const Flags = struct {

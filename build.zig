@@ -16,11 +16,17 @@ pub fn build(b: *std.Build) void {
         .root_module = exe_mod,
     });
 
+    const zmaps_dep = b.dependency("zmaps", .{
+        .target = target,
+        .optimize = optimize,
+    });
+
     const flags_dep = b.dependency("flags", .{
         .target = target,
         .optimize = optimize,
     });
 
+    exe.root_module.addImport("zmaps", zmaps_dep.module("zmaps"));
     exe.root_module.addImport("flags", flags_dep.module("flags"));
 
     b.installArtifact(exe);

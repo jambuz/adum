@@ -40,6 +40,10 @@
             .url = "git+https://github.com/n0s4/flags#290cccefff7f3783039bed4135ccca9e503a56ae",
             .hash = "flags-0.10.0-a_9h3kR2AABNAfaPGRyOOGmWsfv12Hk6JQPTX4MM446s",
         },
+        .zmaps = .{
+            .url = "git+https://github.com/jambuz/zmaps#6c1eef5166426ffefcffcb7163d090bb63343d70",
+            .hash = "zmaps-0.0.0-c1pWNGMdAAAhsKSgwkxmyd-8e8qIyKHWzTLubGfO1jis",
+        },
     },
     .paths = .{
         "build.zig",
