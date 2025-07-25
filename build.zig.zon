@@ -10,8 +10,8 @@
             .hash = "flags-0.10.0-a_9h3kR2AABNAfaPGRyOOGmWsfv12Hk6JQPTX4MM446s",
         },
         .zmaps = .{
-            .url = "git+https://github.com/jambuz/zmaps#6c1eef5166426ffefcffcb7163d090bb63343d70",
-            .hash = "zmaps-0.0.0-c1pWNGMdAAAhsKSgwkxmyd-8e8qIyKHWzTLubGfO1jis",
+            .url = "git+https://github.com/jambuz/zmaps#23ba954a7f50bd434687b1f7d1f380a9d46bc0c5",
+            .hash = "zmaps-0.0.0-c1pWNF0dAABpUWFbQX7e7sfLfpcqeaOZ-VSL3Mtc2QiD",
         },
     },
 

@@ -7,9 +7,10 @@ pub fn dumpMemoryToFile(
     dump_path: []const u8,
 ) !void {
     const payload_len = mem_end - mem_start;
-    var buf: [2 * 1024 * 1024]u8 = undefined;
+    var buf: [128 * 1024 * 1024]u8 = undefined;
 
     const read_len = @min(payload_len, buf.len);
+    std.log.debug("Byte amount to read: {d}\n", .{read_len});
 
     const iov_local = &[_]std.posix.iovec{
         .{
