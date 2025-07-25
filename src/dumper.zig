@@ -33,8 +33,10 @@ pub fn dumpMemoryToFile(
         0,
     );
 
-    std.log.err("Reading process memory failed. Status: {}", .{std.posix.errno(result)});
-    if (result < 0) return error.ProcessVmReadvFailed;
+    if (result < 0) {
+        std.log.err("Reading process memory failed. Status: {}", .{std.posix.errno(result)});
+        return error.ProcessVmReadvFailed;
+    }
 
     const f = try std.fs.createFileAbsolute(dump_path, .{});
     defer f.close();

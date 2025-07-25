@@ -6,19 +6,6 @@ const zmaps = @import("zmaps");
 
 const Dumper = @import("dumper.zig");
 
-pub const std_options: std.Options = .{
-    .logFn = log,
-};
-
-pub fn log(
-    comptime level: std.log.Level,
-    comptime _: @Type(.enum_literal),
-    comptime format: []const u8,
-    args: anytype,
-) void {
-    std.debug.print("[{s}] " ++ format, .{level.asText()} ++ args);
-}
-
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}).init;
     defer _ = gpa.deinit();
