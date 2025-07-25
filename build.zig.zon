@@ -1,7 +1,7 @@
 .{
     .name = .adum,
     .version = "0.0.0",
-    .fingerprint = 0x2be6d5940b9b5d90,
+    .fingerprint = 0x8c4bbcd05fc41396,
     .minimum_zig_version = "0.14.1",
 
     .dependencies = .{

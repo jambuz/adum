@@ -1,9 +1,23 @@
 const std = @import("std");
+const builtin = @import("builtin");
 
 const flags = @import("flags");
 const zmaps = @import("zmaps");
 
 const Dumper = @import("dumper.zig");
+
+pub const std_options: std.Options = .{
+    .logFn = log,
+};
+
+pub fn log(
+    comptime level: std.log.Level,
+    comptime _: @Type(.enum_literal),
+    comptime format: []const u8,
+    args: anytype,
+) void {
+    std.debug.print("[{s}] " ++ format, .{level.asText()} ++ args);
+}
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}).init;
@@ -19,9 +33,7 @@ pub fn main() !void {
 
     const map = try p.findModule(f.module_name);
 
-    const stdout = std.io.getStdOut().writer();
-    try stdout.print("[*] {?s} at \x1b[1;37m{x}-{x}\x1b[0;37m\n", .{ map.path, map.start, map.end });
-
+    std.log.debug("{?s} at \x1b[0;36m{x}-{x}\x1b[0;37m\n", .{ map.path, map.start, map.end });
     if (f.dump_path) |path| {
         try Dumper.dumpMemoryToFile(f.pid, map.start, map.end, path);
     }
