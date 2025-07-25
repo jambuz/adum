@@ -7,8 +7,7 @@ pub fn dumpMemoryToFile(
     dump_path: []const u8,
 ) !void {
     const payload_len = mem_end - mem_start;
-    const max_buf_len = 2 * 1024 * 1024;
-    var buf: [max_buf_len]u8 = undefined;
+    var buf: [2 * 1024 * 1024]u8 = undefined;
 
     const read_len = @min(payload_len, buf.len);
 

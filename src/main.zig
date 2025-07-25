@@ -20,7 +20,7 @@ pub fn main() !void {
         defer p.deinit();
 
         const map = try p.findModule(target_mod);
-        std.log.debug("{?s} at \x1b[0;36m{x}-{x}\x1b[0;97m\n", .{ map.path, map.start, map.end });
+        std.log.debug("\x1b[0;37m{?s} at \x1b[0;36m{x}-{x}\x1b[0;97m", .{ map.path, map.start, map.end });
         if (f.command.search.dump) {
             if (f.command.search.dump_out_path) |path| {
                 try Dumper.dumpMemoryToFile(f.pid, map.start, map.end, path);
